@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>How Browser works</title>
+
+    <meta name="description" content="How Browser works">
+    <meta name="author" content="Arvind Ravulaavru">
+
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu|Roboto:400,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+
+    <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+    <base target="_blank">
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="#004d40">
+                <h1>How Browser Works</h1>
+                <br/>
+                <p>
+                <p>@arvindr21</p>
+                        <a href="http://twitter.com/arvindr21" target="_blank" class="image">
+                            <img src="imgs/twitter.png">
+                        </a>
+                        <a href="http://github.com/arvindr21" target="_blank" class="image">
+                            <img src="imgs/github.png">jquer
+                        </a>
+                        <a href="http://thejackalofjavascript.com" target="_blank" class="image">
+                            <img src="imgs/blog.png">
+                        </a>
+
+
+                    </p>              
+                <h3>July 2014</h3>
+                <p>
+
+                </p>
+            </section>
+
+            <section data-background="#004d40">
+                <h2>Heads Up</h2>
+                <hr/>
+                <p>
+                    Sharing what I learnt so far.
+                </p>
+                <p>
+                    Written by a lot of awesome people.
+                </p>
+                <p>
+                    <em>only</em> Compiling and sharing the knowledge.
+                </p>
+            </section>
+            <section data-background="#004d40">
+                <h3>http://www.google.com</h3>
+                <br/>
+                <ul>
+                    <li>Resolve DNS</li>
+                    <li>Request Page</li>
+                    <li>Tokenize the response</li>
+                    <li>Parse HTML</li>
+                    <li>Build DOM tree</li>
+                    <li>Build Render tree</li>
+                    <li>Layout the Render tree</li>
+                    <li>Painting</li>
+                </ul>
+            </section>
+            <section data-background="#004d40">
+                <h2>High Level structure</h2>
+                <p>
+                    <img src="imgs/layers.png" style="width:799px;">
+                </p>
+            </section>            
+            <section data-background="#004d40">
+                <h4>The entire browser USED to runs in one process</h4><hr/>
+                <em>(IE duh!)</em>
+            </section>
+            <section data-background="#004d40">
+                <h3>Today, One tab one process</h3>
+                <hr/>
+                <h4>This means</h4>
+                <hr/>
+                <h3>Every tab will have its own instance of the rendering engine</h3>
+            </section>
+            <section data-background="#004d40">
+                <h2>In Chrome</h2>
+            </section>
+            <section data-background="#004d40">
+                <p>
+                    <img src="imgs/process.png" style="width:999px;">
+                </p>
+            </section>
+            <section data-background="#004d40">
+                <h3>What exactly happens?</h3>
+            </section>
+            <section data-background="#004d40">
+                <p>
+                    <img src="imgs/flow.png" style="width:999px;">
+                </p>
+            </section>
+            <section data-background="#004d40">
+                <h2>Rendering Engine</h2><hr/>
+                <h3>The Heart & Soul</h3>
+            </section>
+            <section data-background="#004d40">
+                <p>
+                    <img class="fragment" src="imgs/down_hand.png" style="float:left;">
+                    <img src="imgs/flow2.png" style="width:999px;">
+                </p>
+            </section>
+            <section data-background="#004d40">
+                 <p>
+                    <img src="imgs/flow3.png" style="width:399px;">
+                </p>
+                </section>
+            <section data-background="#004d40">
+                <h3>Turn HTML text <br/><br/>to<br/><br/>Document Object Model</h3>
+                </section>
+            <section data-background="#004d40">
+                
+                <pre><code>&lt;html>
+  &lt;body>
+    <p>
+      Hello World
+    </p>
+    <div>&lt;img src="example.png"/></div>
+  &lt;/body>
+&lt;/html></code></pre>
+            </section>
+            <section data-background="#004d40">
+                <p>
+                    <img src="imgs/domtree.png" style="width:699px;">
+                </p>
+            </section>
+            <section data-background="#004d40">
+                 <label>
+                    <a href="https://github.com/WebKit/webkit/blob/master/Source/WebCore/html/parser/HTMLTreeBuilder.cpp#L603">Process Start Tag For InBody</a>
+                </label>  
+                <br/>
+                <label>
+                    <a href="https://github.com/WebKit/webkit/blob/master/Source/WebCore/html/parser/HTMLTreeBuilder.cpp#L988">Close The Cell</a>
+                </label>                
+            </section>
+              <section data-background="#004d40">
+                <p>
+                    <img src="imgs/down_hand.png" style="float:left; margin-left:225px;">
+                    <img src="imgs/flow2.png" style="width:999px;">
+                </p>
+            </section>
+
+            <section data-background="#004d40">
+                 <h3>Build Render Tree</h3>
+            </section>
+            <section data-background="#004d40">
+                 <h3>DOM Tree + CSS == Render Tree  </h3><hr/>
+                 <h3>CSS Box Model</h3>
+            </section>
+            <section data-background="#004d40">
+                 <h3>Only visual elements are in the render tree</h3>
+                 <hr/>
+                 <h4>Not part of render tree</h4>
+                 <h4><code>Head</code> <br/> <code>display:none</code> <br/> <code>position:absolute</code><br/> <code>position:relative</code></h4>
+            </section>
+           
+             <section data-background="#004d40">             
+                <pre><code>switch (style.get().display()) {
+    case NONE:
+        style.dropRef();
+        return nullptr;
+    case INLINE:
+        return createRenderer&lt;RenderInline>(element, WTF::move(style));
+    case BLOCK:
+    case INLINE_BLOCK:
+    case COMPACT:
+        return createRenderer&lt;RenderBlockFlow>(element, WTF::move(style));
+    case LIST_ITEM:
+        return createRenderer&lt;RenderListItem>(element, WTF::move(style));
+    case TABLE:
+    case INLINE_TABLE:
+        return createRenderer&lt;RenderTable>(element, WTF::move(style));</pre></code>
+        <p><a href="https://github.com/WebKit/webkit/blob/5688ea63340a14e917075d97a0155662abb5bad8/Source/WebCore/rendering/RenderElement.cpp#L155">Source</a></p>
+            </section>
+            <section data-background="#004d40">
+                 <h3>Resolve Styles - CSS Specificity</h3>
+                 <hr/>
+                 <ol>
+                    <li>User Styles</li>
+                    <li>Inline Styles</li>
+                    <li>Browser Styles</li>
+                 </ol>
+            </section>
+             <section data-background="#004d40">
+                <p>
+                    <img src="imgs/renderTree.png" style="width:999px;">
+                </p>
+            </section>
+              <section data-background="#004d40">
+                <p>
+                    <img src="imgs/down_hand.png" style="float:left; margin-left:488px;">
+                    <img src="imgs/flow2.png" style="width:999px;">
+                </p>
+            </section>
+
+            <section data-background="#004d40">
+                <h3>
+                    Calculate the position - Size
+                </h3>
+            </section>
+            <section data-background="#004d40">
+                <p>
+                    <img src="imgs/render3.png" style="width:999px;">
+                </p>
+            </section>
+             <section data-background="#004d40">
+                <p>
+                    <img src="imgs/down_hand.png" style="float:left; margin-left:728px;">
+                    <img src="imgs/flow2.png" style="width:999px;">
+                </p>
+            </section>
+            <section data-background="#004d40">
+                <video controls="" preload="" autobuffer="" width="640" height="510">
+                    <source src="https://dl.dropboxusercontent.com/u/39519/talks/gperf/assets/geckoreflow-mozillaorg.mp4" type="video/mp4">
+                    <source src="https://dl.dropboxusercontent.com/u/39519/talks/gperf/assets/geckoreflow-mozillaorg.webm" type="video/webm">
+                    <iframe title="YouTube video player" width="640" height="510" src="http://www.youtube.com/embed/ZTnIxIA5KGw?rel=0" frameborder="0" allowfullscreen=""></iframe>
+                </video>
+            </section>
+            <section data-background="#004d40">
+                <h3>yahoo.com</h3>
+            </section>
+            <section data-background="#004d40">
+                <h3>microsoft.com</h3>
+            </section>
+            <section data-background="#004d40">
+                <h3>Firebug Paint Events</h3>
+            </section>          
+            <section data-background="#004d40">
+                <p>
+                <img src="imgs/19d3.png" />
+                </p>
+            </section>
+            <section data-background="#004d40">
+                <p>
+                <img src="imgs/ebf0.png" />
+                </p>
+            </section>
+            <section data-background="#004d40">
+                <div columns="2">
+                <h4>Element</h4>
+            <code>clientHeight</code>, <code>clientLeft</code>, <code>clientTop</code>, <code>clientWidth</code>, <code>focus()</code>, <code>getBoundingClientRect()</code>, <code>getClientRects()</code>, <code>innerText</code>, <code>offsetHeight</code>, <code>offsetLeft</code>, <code>offsetParent</code>, <code>offsetTop</code>, <code>offsetWidth</code>, <code>outerText</code>, <code>scrollByLines()</code>, <code>scrollByPages()</code>, <code>scrollHeight</code>, <code>scrollIntoView()</code>, <code>scrollIntoViewIfNeeded()</code>, <code>scrollLeft</code>, <code>scrollTop</code>, <code>scrollWidth</code>
+
+            <h4>Frame, Image</h4>
+            <code>height</code>, <code>width</code>
+
+            <h4>Window</h4>
+            <code>getComputedStyle()</code>, <code>scrollBy()</code>, <code>scrollTo()</code>, <code>scrollX</code>, <code>scrollY</code>, <code>webkitConvertPointFromNodeToPage()</code>, <code>webkitConvertPointFromPageToNode()</code>
+          </div>
+         
+            </section>
+            <section data-background="#004d40">
+                <h2>TRIGGER HW ACCEL</h2>
+                <code>translateZ(0) or translate3d(0,0,0)</code>
+<video controls="" preload="" autobuffer="" width="640" height="310" style="margin-top: 40px;">
+                <source src="https://dl.dropboxusercontent.com/u/39519/talks/gperf/assets/translate3d.mp4" type="video/mp4">
+                <source src="https://dl.dropboxusercontent.com/u/39519/talks/gperf/assets/translate3d.webm" type="video/webm">
+                <iframe title="YouTube video player" width="640" height="310" src="http://www.youtube.com/embed/IKl78ZgJzm4?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </video>
+            </section>
+
+            <section data-background="#004d40">
+             <h3><a href="http://codepen.io/paulirish/pen/nkwKs">Animate with Top/Left</a></h3>
+
+             VS.
+             <h3><a href="http://jsfiddle.net/arvindravulavaru/e73hN/show">Animate with Translate</a></h3>
+                
+            </section>
+            <section data-background="#004d40">
+             <h3>Finally</h3>
+             <hr/>
+             <h4>Understand and Love Browsers</h4>                
+            </section>
+            <section data-background="#004d40">
+             <h3>Resources</h3>
+             <ul>
+             <a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">
+             <li>How Browsers Work</li></a>
+             <a href="http://vimeo.com/44182484">
+             <li>How Browsers Work [video]</li></a>
+             <a href="https://docs.google.com/presentation/d/1ZRIQbUKw9Tf077odCh66OrrwRIVNLvI_nhLm2Gi__F0/embed?start=false&loop=false&delayms=3000#slide=id.p">
+             <li>How WebKit Works</li></a>
+             <a href="https://docs.google.com/presentation/d/1WOhbWLkhMyo4vZUaHq-FO-mt0B2sejXw-lMwohD5iUo/edit#slide=id.g2a8a2080a_088">
+             <li>Blink Compositing</li></a>
+             <a href="http://www.paulirish.com/2013/webkit-for-developers/">
+             <li>Webkit for developers</li></a>
+             <a href="http://vimeo.com/34055123">
+             <li>SenchaCon 2011: Hacking WebKit & Its JavaScript Engines [video]</li></a>
+             </ul>
+            </section>
+            <section data-background="#004d40">
+             <h3>Questions?</h3>
+             <hr/>
+             <h4>Thanks!</h4>                
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'plugin/markdown/marked.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+
+</body>
+
+</html>
